@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ApiService {
   cartCount = new BehaviorSubject(0)
   wishlistCount = new BehaviorSubject(0)
-  SERVER_URL="http://localhost:3000"
+  SERVER_URL="https://ecart-angular-server.onrender.com"
 
   constructor(private http:HttpClient) {
     if(sessionStorage.getItem("token")){
