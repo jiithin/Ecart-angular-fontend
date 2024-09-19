@@ -1,0 +1,80 @@
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image mt-4 p-3">
+                        <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?t=st=1717535884~exp=1717539484~hmac=b3b2c893d8ee234295d0dddbdf7c772a710987a8d0674629fdffef9d062e43b4&w=740"
+                            alt="" width="100%">
+                    </div>
+                    <div class="col-lg-7">
+
+
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="fw-bolder mb-4" style="color: #1cc88a;">SignUp</h1>
+                            </div>
+                            <!-- form -->
+                            <form class="user" [formGroup]="registerForm">
+
+                                <!-- username -->
+                                <div class="form-group w-75 mt-3 mb-sm-0  ms-5 me-5">
+                                    <input type="text" class="form-control form-control-user shadow-sm "
+                                        id="exampleFirstName" placeholder="Username" name="username"
+                                        formControlName="username">
+                                    <div class="text-danger"
+                                        *ngIf="registerForm.get('username')?.errors&&registerForm.get('username')?.touched">
+                                        <small>*Invalid Username</small></div>
+                                </div>
+
+                                <!-- email -->
+                                <div class="form-group mt-3 mb-sm-0 w-75 ms-5 me-5">
+                                    <input type="email" class="form-control form-control-user shadow-sm "
+                                        id="exampleInputEmail" placeholder="Email Address" name="email"
+                                        formControlName="email">
+                                    <div class="text-danger"
+                                        *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.touched">
+                                        <small>*Invalid Email</small></div>
+                                </div>
+
+                                <!-- password -->
+                                <div class="form-group mt-3 mb-sm-0 w-75 ms-5 me-5">
+                                    <input type="password" class="form-control form-control-user shadow-sm "
+                                        id="exampleInputPassword" placeholder="Password" name="password"
+                                        formControlName="password">
+                                    <div class="text-danger"
+                                        *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.touched">
+                                        <small>*Invalid password</small></div>
+                                </div>
+
+                                <button (click)="register()" class="btn btn-user text-white btn-block shadow-sm mt-3 w-75 ms-5 me-5"
+                                    style="background-color: #1cc88a;">
+                                    Register Account
+                                </button>
+                                <hr>
+                                <a href="" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                </a>
+                                <a href="" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="" href="" style="text-decoration: none;color: green;">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <p>Already have an account?<a class="" style="text-decoration: none;color: green;"
+                                        href="/login"> Login!</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

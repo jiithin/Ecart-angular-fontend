@@ -1,0 +1,82 @@
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center mt-4">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image mt-5">
+
+                                <img src="https://img.freepik.com/free-vector/group-customers-shopping-online-store-huge-tablet-sale-internet-shop-buyer-with-purchases-cart-flat-illustration_74855-18344.jpg?t=st=1717536742~exp=1717540342~hmac=9b59967aa439be80702fc914dcfef05e6ab56d39488468e7782445bc8789d310&w=740"
+                                    width="100%" alt="">
+                            </div>
+                            <div class="col-lg-6">
+
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="fw-bolder mb-4 " style="color: #7875e7;">LogIn</h1>
+                                    </div>
+                                    <!-- form -->
+                                    <form class="user" [formGroup]="loginForm">
+                                        
+                                        <!-- email -->
+                                        <div class="form-group mb-3">
+                                            <input type="email" class="form-control form-control-user shadow-sm"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address..." name="email"
+                                                formControlName="email">
+                                            <div class="text-danger"
+                                                *ngIf="loginForm.get('email')?.errors&&loginForm.get('email')?.touched">
+                                                <small>*Invalid Email</small></div>
+                                        </div>
+
+                                        <!-- password -->
+                                        <div class="form-group mb-3">
+                                            <input type="password" class="form-control form-control-user shadow-sm"
+                                                id="exampleInputPassword" placeholder="Password" name="password"
+                                                formControlName="password">
+                                            <div class="text-danger"
+                                                *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched">
+                                                <small>*Invalid password</small></div>
+                                        </div>
+
+                                        <!-- button -->
+                                        <button class="btn btn-user text-white btn-block w-25 shadow-sm"
+                                            style="background-color: #7875e7;" (click)="login()">
+                                            Login
+                                        </button>
+                                        <hr>
+                                        <a href="" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="" style="text-decoration: none;"
+                                            href="../register/register.component.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="" style="text-decoration: none;" href="/register">Create an
+                                            Account!</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

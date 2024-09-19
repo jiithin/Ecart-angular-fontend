@@ -1,0 +1,59 @@
+<app-header></app-header>
+<section class="py-5 mt-5">
+    <div class="container  mt-1">
+        <div class="text-center mb-3">
+            <h1 class="text-danger fw-bolder">Your Wishlist</h1>
+        </div>
+
+        <div *ngIf="allProducts.length==0" >
+            <h2 class="text-secondary text-center "> is empty...</h2>
+            <div class="d-flex align-items-center justify-content-center mt-5">
+            <img src="https://cdn-icons-png.flaticon.com/256/4689/4689916.png" alt="">
+            </div>
+        </div>
+        
+        <div *ngIf="allProducts.length!=0" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            <div *ngFor="let product of allProducts" class="col mb-5 ">
+                <div class="card h-100 shadow" >
+                    <!--add to wishlist button  -->
+                    <div class="badge text-white position-absolute bg-transparent" >
+                        <button (click)="removeItem(product._id)" type="button" class="btn text-danger"><i class="fa-solid fa-heart"></i></button>
+                      </div>
+
+                    <!-- Sale badge-->
+                    <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                    <!-- Product image-->
+                    <img class="card-img-top p-3" routerLink="/view/{{product.id}}" src={{product.image}} alt="..." height="250px" width="200px" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title.slice(0,20)}}</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                            <span class="text-muted text-decoration-line-through">1{{product.price}}</span>
+                            {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="btn-group w-100 shadow-sm" role="group" aria-label="...">
+                            <button (click)="addToCart(product)" type="button" class="btn btn-primary text-whitw mt-auto w-75 shadow"><i class="fa-solid fa-cart-shopping"></i> Move to Cart</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+

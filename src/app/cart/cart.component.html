@@ -1,0 +1,87 @@
+<app-header></app-header>
+<section class="py-5 mt-5 ">
+    <div class="container px-4 px-lg-5 mt-1">
+        <div class="text-center mb-3">
+            <h1 class="text-primary fw-bolder">Your Cart</h1>
+        </div>
+        <div *ngIf="allProducts.length==0" >
+            <h2 class="text-secondary text-center"> is empty...</h2>
+            <div class="d-flex align-items-center justify-content-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="" width="380px">
+            </div>
+            
+        </div>
+
+        <div *ngIf="allProducts.length!=0" class="container px-4 px-lg-5 mt-5">
+
+
+            <div class="row">
+                <div class="col-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Product</th>
+                                <th>Image</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let product of allProducts; let i=index">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{product.title.slice(0,20)}}..</td>
+                                <td><img height="100px" src={{product.image}} alt="" width="80px"></td>
+                                <td>
+                                    <div class="d-flex">
+                                        <button (click)="decrementQuantity(product._id)" class="btn fw-bolder">-</button>
+                                        <input type="text" style=" width: 40px;" [value]="product.quantity"
+                                            class="form-control" readonly>
+                                        <button (click)="incrementQuantity(product._id)"
+                                            class="btn fw-bolder">+</button>
+                                    </div>
+                                </td>
+                                <td>${{product.totalPrice}}</td>
+                                <td><button (click)="deleteItem(product._id)" class="btn btn-outline-light"> <i
+                                            class="fa-solid fa-trash text-danger" ></i> </button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="float-end mt-3">
+                        <button class="btn btn-danger me-2" (click)="emptyCart()">Empty Cart</button>
+                        <button class="btn btn-primary" routerLink="">Shop More</button>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="border rounded p-3">
+                        <h3 class="fw-bolder">Total :<span> ${{totalPrice}}</span></h3>
+                        <div *ngIf="!cuponStatus">
+                            <h6 (click)="getCupon()" class="btn btn-link " style="text-decoration: none;"><i class="fa-solid fa-tag " style="color: #10b62c;"></i> Click here to view offers</h6>
+                        </div>
+                        
+                        <div class="d-flex justify-content-evenly" *ngIf="cuponStatus">
+
+                            <h1 *ngIf="totalPrice>=300 && totalPrice<=99999" class="text-danger fw-bolder">DISCOUNT</h1>
+
+                            <ng-container *ngIf="totalPrice>=300 && totalPrice<=450">
+                                <img (click)="discount35()" *ngIf="totalPrice>=300 && totalPrice<=450" src="https://www.svgrepo.com/show/250946/percentage-discount.svg" alt="" width="50px" height="50px">
+                            </ng-container>
+
+                            <ng-container *ngIf="totalPrice>=450 && totalPrice<=99999 !clickCuponStatus">
+                            <img (click)="discount50()"  src="https://www.svgrepo.com/show/250927/percentage-discount.svg" alt="" width="50px" height="50px">
+
+                            </ng-container>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary mt-3">Check Out</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
